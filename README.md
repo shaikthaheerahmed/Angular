@@ -1,2 +1,2 @@
 # Angular
-This is the front end application
+This is the backend application
