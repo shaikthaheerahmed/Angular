@@ -1,0 +1,185 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a>EmployeeManager</a>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="nav-link" (click)=" onOpenModal(null,'add')" href="#">ADD Employee</a>
+      </nav>
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+  </div>
+</nav>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+
+<!--ADD EMPLOYEE MODAL-->
+<!-- Modal -->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="addEmployeeModal" data-bs-toggle="modal" tabindex="-1" aria-labelledby="addEmployeeModalLabel"  data-bs-target="#addEmployeeModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)" >
+        <div class="m-3">
+          <div class="form-group row">
+            <label for="name" style="color: green;" class="col-form-label col-4"><i class="fa fa-user" aria-hidden="true"></i> Username</label>
+            <div class="col-8">
+               <input ngModel type="text" class="form-control"  name="name" id="name"  required="required" >
+           </div>
+           </div>
+
+            <div class="form-group row">
+            <label for="email" style="color: green;" class="col-form-label col-4"><i class="fa fa-envelope" aria-hidden="true"></i> EMAIL</label>
+            <div class="col-8">
+               <input ngModel type="email" class="form-control"   name="email"  id="email" required="required">
+           </div>
+           </div>
+
+           <div class="form-group row">
+            <label for=jobTitle style="color: green;" class="col-form-label col-4"><i class="fa fa-briefcase" aria-hidden="true"></i> JObTITLE</label>
+            <div class="col-8">
+               <input ngModel type="text" class="form-control"  name="jobTitle"  id="jobTitle" required="required">
+           </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="phone" style="color: green;" class="col-form-label col-4"><i class="fa fa-phone" aria-hidden="true"></i> Phone</label>
+            <div class="col-8">
+               <input ngModel type="text" class="form-control"   name="phone"  id="phone" required="required">
+           </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="imageUrl" style="color: green;" class="col-form-label col-4"><i class="fa fa-picture-o" aria-hidden="true"></i> image URL</label>
+            <div class="col-8">
+               <input ngModel type="text" class="form-control"  name="imageUrl"  id="imageUrl" required="required">
+           </div>
+           </div>
+          </div>
+          </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button [disabled]="addForm.invalid"  type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- EditModal -->
+<div class="modal fade" id="editEmployeeModal" data-bs-toggle="modal" tabindex="-1" aria-labelledby="editEmployeeModalLabel"  data-bs-target="#editEmployeeModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <div class="m-3">
+          <div class="form-group row">
+            <label style="color: green;" class="col-form-label col-4"><i class="fa fa-user" aria-hidden="true"></i> Username</label>
+            <div class="col-8">
+               <input type="text" class="form-control" name="name" id="name"  required="required" >
+           </div>
+           </div>
+
+            <div class="form-group row">
+            <label style="color: green;" class="col-form-label col-4"><i class="fa fa-envelope" aria-hidden="true"></i> EMAIL</label>
+            <div class="col-8">
+               <input type="email" class="form-control" name="email"  id="email" required="required">
+           </div>
+           </div>
+
+           <div class="form-group row">
+            <label style="color: green;" class="col-form-label col-4"><i class="fa fa-briefcase" aria-hidden="true"></i> JObTITLE</label>
+            <div class="col-8">
+               <input type="text" class="form-control" name="jobTitle"  id="jobTitle" required="required">
+           </div>
+           </div>
+
+           <div class="form-group row">
+            <label style="color: green;" class="col-form-label col-4"><i class="fa fa-phone" aria-hidden="true"></i> Phone</label>
+            <div class="col-8">
+               <input type="text" class="form-control" name="phone"  id="phone" required="required">
+           </div>
+           </div>
+
+           <div class="form-group row">
+            <label style="color: green;" class="col-form-label col-4"><i class="fa fa-picture-o" aria-hidden="true"></i> image URL</label>
+            <div class="col-8">
+               <input type="text" class="form-control" name="imageUrl"  id="imageUrl" required="required">
+           </div>
+           </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">UPDATE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Modal -->
+<div class="modal fade" id="deleteEmployeeModal" data-bs-toggle="modal" tabindex="-1" aria-labelledby="deleteEmployeeModalLabel"  data-bs-target="#deleteEmployeeModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete The Records</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+          Are You want to delete the Record....
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container"  id="main-container">
+    <div *ngFor="let employee of employees" class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+        <div class="col">
+            <div class="card radius-15 bg-primary">
+                <div class="card-body text-center">
+                    <div class="p-4 radius-15">
+                        <img src="{{employee?.imageUrl}}" width="110" height="110" class="rounded-circle shadow p-1 bg-white" alt="">
+                        <h5  class="mb-0 mt-5 text-white">{{employee?.name}}</h5>
+                        <p class="mb-3 text-white">{{employee?.jobTitle}}</p>
+                        <p class="mb-3 text-white">Phone:{{employee?.phone}}</p>
+                        <p class="mb-3 text-white">Email:{{employee?.email}}</p>
+                        <div class="list-inline contacts-social mt-3 mb-3"> <a href="javascript:;" class="list-inline-item border-0"><i class="bx bxl-facebook"></i></a>
+                          <a href="javascript:;" class="list-inline-item border-0"><i class="bx bxl-twitter"></i></a>
+                          <a href="javascript:;" class="list-inline-item border-0"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                        <div class="d-grid"> <a href="#" class="btn btn-white radius-15">Contact Me</a>
+                        </div>
+                    </div>
+                        <div>
+                          <button type="submit" (click)="onOpenModal(employee,'edit')"  class="btn btn-success" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                          <button type="submit" (click)="onOpenModal(employee,'delete')" class="btn btn-danger" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+
+<router-outlet></router-outlet>
